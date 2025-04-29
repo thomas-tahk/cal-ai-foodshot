@@ -35,13 +35,16 @@ Cal Snap is a proof-of-concept application that allows users to track their calo
   - Google Cloud Vision API
   - Edamam Nutrition Analysis API
   - Cloudinary
+- Docker and Docker Compose (for containerized setup)
 
 ### Setup
 
+#### Local Setup
+
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/cal-snap.git
-   cd cal-snap
+   git clone https://github.com/thomas-tahk/cal-ai-foodshot.git
+   cd cal-ai-foodshot
    ```
 
 2. Set up the backend:
@@ -70,6 +73,75 @@ Cal Snap is a proof-of-concept application that allows users to track their calo
    ```
    flutter run
    ```
+
+#### Docker Setup
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/thomas-tahk/cal-ai-foodshot.git
+   cd cal-ai-foodshot
+   ```
+
+2. Create a `.env` file in the backend directory:
+   ```
+   cp backend/env.example backend/.env
+   ```
+
+3. Edit the `backend/.env` file with your API keys. The database URL is already configured in the docker-compose file.
+
+4. Place your Google Cloud credentials JSON file in the project root as `google_credentials.json`.
+
+5. Start the Docker containers:
+   ```
+   docker-compose up -d
+   ```
+
+6. The backend API will be available at `http://localhost:8000`
+
+## Deployment to DigitalOcean
+
+### Prerequisites
+
+- DigitalOcean account
+- Docker installed on your local machine
+- `doctl` CLI tool installed (DigitalOcean command-line tool)
+
+### Steps
+
+1. Create a new Droplet on DigitalOcean using the Docker image, or use the App Platform.
+
+2. For Droplet deployment:
+   
+   a. Create a new Droplet with Docker installed
+   b. Connect to your Droplet via SSH
+   c. Clone your repository
+   d. Set up your .env file and Google credentials
+   e. Run `docker-compose up -d`
+
+3. For App Platform:
+   
+   a. Create a new App
+   b. Connect to your GitHub repository
+   c. Configure the app settings
+   d. Set environment variables based on your .env file
+   e. Deploy the app
+
+4. Configure a domain name in DigitalOcean's Networking section if needed.
+
+5. Set up SSL certificates through DigitalOcean or Let's Encrypt.
+
+## Environment Variables
+
+The application requires these environment variables in the `backend/.env` file:
+
+- `DATABASE_URL`: PostgreSQL connection string
+- `CLOUDINARY_CLOUD_NAME`: Your Cloudinary cloud name
+- `CLOUDINARY_API_KEY`: Your Cloudinary API key
+- `CLOUDINARY_API_SECRET`: Your Cloudinary API secret
+- `GOOGLE_APPLICATION_CREDENTIALS`: Path to Google Cloud credentials JSON file
+- `EDAMAM_APP_ID`: Edamam API application ID
+- `EDAMAM_APP_KEY`: Edamam API key
+- `DEFAULT_DAILY_CALORIES`: Default daily calorie goal (e.g., 2500)
 
 ## Usage
 
