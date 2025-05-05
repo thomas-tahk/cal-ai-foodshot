@@ -5,7 +5,7 @@ import '../services/api_service.dart';
 class FoodDetailScreen extends StatefulWidget {
   final int foodId;
 
-  const FoodDetailScreen({Key? key, required this.foodId}) : super(key: key);
+  const FoodDetailScreen({super.key, required this.foodId});
 
   @override
   _FoodDetailScreenState createState() => _FoodDetailScreenState();
@@ -253,7 +253,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
               ],
             ),
           );
-        }).toList(),
+        }),
       ],
     );
   }

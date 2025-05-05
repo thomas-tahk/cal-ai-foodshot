@@ -46,3 +46,33 @@ app.*.map.json
 
 # cloud vision api credentials
 google_credentials.json
+
+# Environment variables
+.env
+*.env
+google_credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.pytest_cache/
+
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+.packages
+*.lock
+.pub/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS specific
+.DS_Store
+Thumbs.db
